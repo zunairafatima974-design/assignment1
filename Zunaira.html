@@ -1,0 +1,712 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Zunaira | CSE Portfolio</title>
+
+    <!-- INTERNAL CSS -->
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #080b16;
+            color: #f5f5ff;
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .highlight {
+            color: #a78bfa;
+        }
+
+        /* Navbar */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(8, 11, 22, 0.95);
+            border-bottom: 1px solid #252b42;
+        }
+
+        nav {
+            min-height: 75px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #a78bfa;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #b9bfd3;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #a78bfa;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            padding-top: 70px;
+            padding-bottom: 70px;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .tag {
+            display: inline-block;
+            color: #c2b5ff;
+            background: #1b1935;
+            border: 1px solid #38305e;
+            border-radius: 30px;
+            padding: 7px 15px;
+            font-size: 12px;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 5vw, 62px);
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        .hero h2 {
+            color: #aab4d0;
+            font-size: 22px;
+            font-weight: normal;
+            margin-bottom: 20px;
+        }
+
+        .hero p.description {
+            color: #aab2c7;
+            max-width: 570px;
+            margin-bottom: 28px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 23px;
+            border-radius: 8px;
+            background: linear-gradient(120deg, #7c9cff, #b49aff);
+            color: #090b17;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px #9c83ff35;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #414663;
+            color: white;
+        }
+
+        /* Profile Card */
+        .profile-card {
+            width: 320px;
+            flex-shrink: 0;
+            text-align: center;
+            padding: 35px 25px;
+            border: 1px solid #34334f;
+            border-radius: 22px;
+            background: linear-gradient(145deg, #191d32, #101321);
+            box-shadow: 0 20px 60px #00000040;
+        }
+
+        .avatar {
+            width: 115px;
+            height: 115px;
+            display: grid;
+            place-items: center;
+            margin: 0 auto 22px;
+            border-radius: 30px;
+            background: linear-gradient(135deg, #789cff, #bd91ff);
+            color: #101020;
+            font-size: 55px;
+            font-weight: bold;
+        }
+
+        .profile-card h2 {
+            font-size: 25px;
+            margin-bottom: 5px;
+        }
+
+        .profile-card p {
+            color: #aab2c7;
+            font-size: 14px;
+            margin-top: 8px;
+        }
+
+        .profile-card .university {
+            color: #b8a7ff;
+        }
+
+        .profile-divider {
+            height: 1px;
+            background: #30354d;
+            margin: 23px 0;
+        }
+
+        /* Common Sections */
+        section.content-section {
+            padding-top: 90px;
+            padding-bottom: 20px;
+        }
+
+        .section-label {
+            color: #b8a7ff;
+            letter-spacing: 3px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: clamp(30px, 4vw, 42px);
+            margin-bottom: 30px;
+        }
+
+        /* Objective */
+        .objective-card {
+            padding: 30px;
+            background: #121729;
+            border: 1px solid #292f49;
+            border-radius: 15px;
+            color: #b9c1d7;
+            font-size: 16px;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .skill-card {
+            padding: 25px 18px;
+            background: #121729;
+            border: 1px solid #292f49;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-6px);
+            border-color: #a78bfa;
+        }
+
+        .skill-icon {
+            width: 50px;
+            height: 50px;
+            display: grid;
+            place-items: center;
+            border-radius: 13px;
+            font-size: 23px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .java {
+            background: #3b2832;
+            color: #ffb18a;
+        }
+
+        .html {
+            background: #3b2926;
+            color: #ff967b;
+        }
+
+        .css {
+            background: #202f4b;
+            color: #86b8ff;
+        }
+
+        .javascript {
+            background: #393522;
+            color: #ffe27b;
+            font-size: 16px;
+        }
+
+        .skill-card h3 {
+            margin-bottom: 6px;
+        }
+
+        .skill-card p {
+            color: #aab2c7;
+            font-size: 13px;
+        }
+
+        /* Education */
+        .education-list {
+            display: grid;
+            gap: 18px;
+        }
+
+        .education-card {
+            padding: 25px;
+            background: #121729;
+            border: 1px solid #292f49;
+            border-left: 4px solid #a78bfa;
+            border-radius: 12px;
+        }
+
+        .education-card .year {
+            color: #b8a7ff;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .education-card h3 {
+            font-size: 19px;
+            margin-bottom: 6px;
+        }
+
+        .education-card p {
+            color: #aab2c7;
+        }
+
+        .percentage {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            background: #282343;
+            color: #d5c9ff;
+            font-size: 13px;
+        }
+
+        /* Profiles */
+        .profiles-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .profile-link {
+            padding: 23px;
+            border: 1px solid #292f49;
+            border-radius: 13px;
+            background: #121729;
+            transition: 0.3s;
+        }
+
+        .profile-link:hover {
+            transform: translateY(-5px);
+            border-color: #a78bfa;
+        }
+
+        .profile-link h3 {
+            margin-bottom: 7px;
+        }
+
+        .profile-link p {
+            color: #aab2c7;
+            font-size: 13px;
+        }
+
+        /* Contact */
+        .contact {
+            text-align: center;
+            padding: 55px 25px;
+            border: 1px solid #373253;
+            border-radius: 22px;
+            background: linear-gradient(135deg, #191b35, #111426);
+        }
+
+        .contact-description {
+            color: #aab2c7;
+            max-width: 550px;
+            margin: 0 auto 25px;
+        }
+
+        .contact-note {
+            color: #aab2c7;
+            font-size: 14px;
+            margin-top: 18px;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 100px;
+            padding: 35px 0;
+            text-align: center;
+            border-top: 1px solid #252b42;
+            color: #aab2c7;
+        }
+
+        footer p {
+            margin-top: 8px;
+            font-size: 13px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 850px) {
+            .hero {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .profile-card {
+                width: 100%;
+                max-width: 380px;
+                align-self: center;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .profiles-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+                justify-content: center;
+                padding: 15px 0;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .nav-links a {
+                font-size: 12px;
+            }
+
+            .hero {
+                padding-top: 55px;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .hero h2 {
+                font-size: 19px;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .skill-card {
+                padding: 18px 12px;
+            }
+
+            .objective-card {
+                padding: 22px;
+            }
+
+            section.content-section {
+                padding-top: 70px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <header>
+        <nav class="container">
+            <a href="#home" class="logo">Zunaira<span>.</span></a>
+
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- HERO SECTION -->
+        <section class="hero container" id="home">
+
+            <div class="hero-content">
+                <p class="tag">B.Tech CSE Student · First Year</p>
+
+                <h1>Hello, I'm <span class="highlight">Zunaira</span></h1>
+
+                <h2>Aspiring Software Developer</h2>
+
+                <p class="description">
+                    I'm a first-year Computer Science Engineering student
+                    at Invertis University. I'm interested in programming,
+                    web development, and creating useful digital experiences.
+                </p>
+
+                <div class="buttons">
+                    <a href="#contact" class="btn">Contact Me ↗</a>
+                    <a href="#about" class="btn btn-outline">Explore Portfolio</a>
+                </div>
+            </div>
+
+            <div class="profile-card">
+                <div class="avatar">Z.</div>
+
+                <h2>Zunaira</h2>
+
+                <p>B.Tech Computer Science & Engineering</p>
+
+                <p class="university">Invertis University</p>
+
+                <div class="profile-divider"></div>
+
+                <p>💻 Java Programming</p>
+                <p>🌐 Web Development</p>
+                <p>🚀 Learning and Growing</p>
+            </div>
+
+        </section>
+
+        <!-- CAREER OBJECTIVE -->
+        <section class="content-section container" id="about">
+
+            <p class="section-label">01 / ABOUT ME</p>
+
+            <h2 class="section-title">
+                My Career <span class="highlight">Objective</span>
+            </h2>
+
+            <div class="objective-card">
+                I am a motivated first-year Computer Science Engineering
+                student seeking opportunities to apply and grow my
+                programming and web development skills through practical
+                projects and internships. I aim to strengthen my technical
+                foundation, learn continuously, and contribute to meaningful
+                technology projects.
+            </div>
+
+        </section>
+
+        <!-- TECHNICAL SKILLS -->
+        <section class="content-section container" id="skills">
+
+            <p class="section-label">02 / MY TOOLKIT</p>
+
+            <h2 class="section-title">
+                Technical <span class="highlight">Skills</span>
+            </h2>
+
+            <div class="skills-grid">
+
+                <div class="skill-card">
+                    <div class="skill-icon java">J</div>
+                    <h3>Java</h3>
+                    <p>Programming Language</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon html">5</div>
+                    <h3>HTML</h3>
+                    <p>Web Page Structure</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon css">3</div>
+                    <h3>CSS</h3>
+                    <p>Web Design and Styling</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon javascript">JS</div>
+                    <h3>JavaScript</h3>
+                    <p>Web Development</p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- EDUCATION -->
+        <section class="content-section container" id="education">
+
+            <p class="section-label">03 / ACADEMIC JOURNEY</p>
+
+            <h2 class="section-title">
+                My <span class="highlight">Education</span>
+            </h2>
+
+            <div class="education-list">
+
+                <div class="education-card">
+                    <p class="year">2026 — PRESENT</p>
+
+                    <h3>
+                        Bachelor of Technology in Computer Science
+                        & Engineering
+                    </h3>
+
+                    <p>Invertis University</p>
+
+                    <span class="percentage">
+                        First Year · Ongoing
+                    </span>
+                </div>
+
+                <div class="education-card">
+                    <p class="year">CLASS XII</p>
+
+                    <h3>Intermediate</h3>
+
+                    <p>School education</p>
+
+                    <span class="percentage">78%</span>
+                </div>
+
+                <div class="education-card">
+                    <p class="year">CLASS X</p>
+
+                    <h3>High School</h3>
+
+                    <p>School education</p>
+
+                    <span class="percentage">85%</span>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ONLINE PROFILES -->
+        <section class="content-section container" id="profiles">
+
+            <p class="section-label">04 / CONNECT ONLINE</p>
+
+            <h2 class="section-title">
+                My Online <span class="highlight">Profiles</span>
+            </h2>
+
+            <div class="profiles-grid">
+
+                <a href="#" class="profile-link">
+                    <h3>GitHub ↗</h3>
+                    <p>Code repositories and projects</p>
+                </a>
+
+                <a href="#" class="profile-link">
+                    <h3>LeetCode ↗</h3>
+                    <p>Programming practice and problem solving</p>
+                </a>
+
+                <a href="#" class="profile-link">
+                    <h3>LinkedIn ↗</h3>
+                    <p>Professional networking and opportunities</p>
+                </a>
+
+            </div>
+
+        </section>
+
+        <!-- CONTACT -->
+        <section class="content-section container" id="contact">
+
+            <div class="contact">
+
+                <p class="section-label">05 / GET IN TOUCH</p>
+
+                <h2 class="section-title">
+                    Let's <span class="highlight">Connect</span>
+                </h2>
+
+                <p class="contact-description">
+                    I'm looking forward to learning opportunities,
+                    internships, projects, and connecting with people
+                    who share an interest in technology.
+                </p>
+
+                <!-- Replace the email below with the actual email -->
+                <a href="mailto:YOUR_EMAIL@example.com" class="btn">
+                    Send an Email ↗
+                </a>
+
+                <p class="contact-note">
+                    Email and phone details can be added here.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <a href="#home" class="logo">Zunaira<span>.</span></a>
+
+            <p>Learning · Building · Growing</p>
+
+            <p>© 2026 Zunaira. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
